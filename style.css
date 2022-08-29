@@ -7,4 +7,74 @@ html {
 body {
   font-family: "Rubik", sans-serif;
   background-color: hsl(228, 33%, 97%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comments {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: 32px;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.comment > p {
+  margin: 0;
+}
+
+.score {
+  background-color: hsl(223, 19%, 93%);
+  padding: 4px 8px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  grid-row: 1 / 3;
+}
+
+.score > button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: hsl(239, 57%, 85%);
+  font-weight: 700;
+}
+
+.score > div {
+  color: hsl(238, 40%, 52%);
+  font-weight: 500;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user > img {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.user > .createdAt {
+  color: hsl(211, 10%, 45%);
+}
+
+.content {
+  color: hsl(211, 10%, 45%);
 }
