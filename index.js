@@ -39,6 +39,15 @@ function createCommentElement(comment) {
     createUserElement(comment),
     createContentElement(comment.content)
   );
+
+  if (comment.replies) {
+    const repliesDiv = document.createElement("div");
+    repliesDiv.className = "replies";
+    comment.replies.forEach(reply => {
+      repliesDiv.append(createCommentElement(reply));
+    });
+    commentDiv.append(repliesDiv);
+  }
   return commentDiv;
 }
 
@@ -94,7 +103,16 @@ function displayComments(comments) {
   });
 }
 
-const res = await fetch("/data.json");
-const data = await res.json();
-
-displayComments(data.comments);
+fetch("/data.json")
+  .then(res => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      throw new Error();
+    }
+  })
+  .then(data => displayComments(data.comments))
+  .catch(error => {
+    console.debug(error);
+    alert("Error getting comments");
+  });
